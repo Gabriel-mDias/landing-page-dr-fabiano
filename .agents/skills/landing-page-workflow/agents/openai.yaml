@@ -1,0 +1,4 @@
+interface:
+  display_name: "Landing Page Workflow"
+  short_description: "Coordena intake, cache, manifest e builder"
+  default_prompt: "Use $landing-page-workflow para coordenar os dados e construir a landing page desta entidade."

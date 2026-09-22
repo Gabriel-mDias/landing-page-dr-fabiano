@@ -1,0 +1,26 @@
+{
+  "name": "landing-page-sample",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open",
+    "build": "vite build",
+    "preview": "vite preview",
+    "smoke": "node scripts/browser-smoke.mjs",
+    "test:python": "python -m unittest discover -s tests -p \"test_*.py\"",
+    "validate": "node scripts/validate-page.mjs",
+    "validate:strategy": "node scripts/validate-strategy.mjs --dry-runs",
+    "validate:publication": "node scripts/validate-strategy.mjs",
+    "test": "npm run test:python && npm run validate && npm run validate:strategy && npm run build"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "lenis": "^1.3.11",
+    "swiper": "^12.0.3"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.63.0",
+    "vite": "^7.1.5"
+  }
+}

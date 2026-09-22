@@ -1,0 +1,4 @@
+interface:
+  display_name: "Instagram Profile Intake"
+  short_description: "Coleta perfil e mídias públicas do Instagram"
+  default_prompt: "Use $instagram-profile-intake para atualizar somente os dados públicos do Instagram desta entidade."

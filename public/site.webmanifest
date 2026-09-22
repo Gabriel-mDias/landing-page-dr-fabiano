@@ -1,0 +1,18 @@
+{
+  "name": "Clínica Aurora — Demonstração",
+  "short_name": "Aurora Demo",
+  "description": "Template demonstrativo de landing page para clínicas e serviços profissionais.",
+  "lang": "pt-BR",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f7f5f0",
+  "theme_color": "#183f3a",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

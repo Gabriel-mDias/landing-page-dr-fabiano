@@ -1,0 +1,4 @@
+interface:
+  display_name: "Landing Page Builder"
+  short_description: "Constrói a página a partir do manifest"
+  default_prompt: "Use $landing-page-builder para construir e validar esta landing page com os dados do manifest da entidade."

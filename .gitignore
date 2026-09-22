@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.assets/
+.sample-backup/
+.env
+.DS_Store
+*.log
+__pycache__/
+*.pyc

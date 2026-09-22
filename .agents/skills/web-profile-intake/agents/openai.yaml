@@ -1,0 +1,4 @@
+interface:
+  display_name: "Web Profile Intake"
+  short_description: "Pesquisa perfil comercial público com fontes"
+  default_prompt: "Use $web-profile-intake para atualizar somente o perfil web e os contatos desta entidade."

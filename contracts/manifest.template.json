@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "entity": {
+    "id": "{{entity_id}}",
+    "display_name": "{{display_name}}",
+    "document": {
+      "type": null,
+      "value": null
+    }
+  },
+  "contact": {
+    "website": null,
+    "email": null,
+    "phone": null,
+    "whatsapp": null,
+    "address": null
+  },
+  "instagram": {
+    "handle": null,
+    "url": null,
+    "data_path": null,
+    "profile_path": null,
+    "posts": [],
+    "candidates_index": null,
+    "authorization": "unknown"
+  },
+  "web": {
+    "profile_path": null,
+    "sources_path": null,
+    "raws": [],
+    "reviews": []
+  },
+  "timestamps": {
+    "instagram_collected_at": null,
+    "web_collected_at": null
+  },
+  "intake_status": {
+    "instagram": "pending",
+    "web": "pending",
+    "media": "pending"
+  },
+  "cache": {
+    "instagram": {
+      "fingerprint": null,
+      "collected_at": null,
+      "expires_at": null
+    },
+    "web": {
+      "fingerprint": null,
+      "collected_at": null,
+      "expires_at": null
+    }
+  },
+  "conflicts": [],
+  "landing_page": {
+    "status": "not_started",
+    "briefing_path": null,
+    "creative_direction_path": null,
+    "output_paths": [],
+    "approved_at": null,
+    "published_at": null
+  },
+  "workflow": {
+    "status": "pending",
+    "current_stage": "initialized",
+    "last_error": null
+  },
+  "created_at": "{{created_at}}",
+  "updated_at": "{{updated_at}}"
+}

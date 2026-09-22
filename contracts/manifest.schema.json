@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/landing-page/manifest.schema.json",
+  "title": "Landing page entity manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "entity", "contact", "instagram", "web", "timestamps", "intake_status", "cache", "conflicts", "landing_page", "workflow", "created_at", "updated_at"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "entity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "display_name", "document"],
+      "properties": {
+        "id": { "$ref": "#/$defs/entityId" },
+        "display_name": { "type": "string", "minLength": 1 },
+        "document": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type", "value"],
+          "properties": {
+            "type": { "enum": [null, "cpf", "cnpj", "other"] },
+            "value": { "anyOf": [{ "type": "null" }, { "type": "string", "pattern": "^(?=.*\\*)[0-9*./-]+$", "maxLength": 24 }] }
+          }
+        }
+      }
+    },
+    "contact": { "type": "object" },
+    "instagram": {
+      "type": "object",
+      "properties": {
+        "data_path": { "$ref": "#/$defs/nullablePath" },
+        "profile_path": { "$ref": "#/$defs/nullablePath" },
+        "posts": { "type": "array", "items": { "$ref": "#/$defs/pathItem" } },
+        "candidates_index": { "$ref": "#/$defs/nullablePath" },
+        "authorization": { "enum": ["unknown", "allowed", "denied"] }
+      }
+    },
+    "web": {
+      "type": "object",
+      "properties": {
+        "profile_path": { "$ref": "#/$defs/nullablePath" },
+        "sources_path": { "$ref": "#/$defs/nullablePath" },
+        "raws": { "type": "array", "items": { "$ref": "#/$defs/pathItem" } },
+        "reviews": { "type": "array", "items": { "type": "object" } }
+      }
+    },
+    "timestamps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instagram_collected_at", "web_collected_at"],
+      "properties": {
+        "instagram_collected_at": { "$ref": "#/$defs/nullableDate" },
+        "web_collected_at": { "$ref": "#/$defs/nullableDate" }
+      }
+    },
+    "intake_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instagram", "web", "media"],
+      "properties": {
+        "instagram": { "$ref": "#/$defs/intakeStatus" },
+        "web": { "$ref": "#/$defs/intakeStatus" },
+        "media": { "$ref": "#/$defs/intakeStatus" }
+      }
+    },
+    "cache": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["instagram", "web"],
+      "properties": {
+        "instagram": { "$ref": "#/$defs/cache" },
+        "web": { "$ref": "#/$defs/cache" }
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["field", "values", "status"],
+        "properties": {
+          "field": { "type": "string", "minLength": 1 },
+          "values": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["value", "source", "url", "observed_at"],
+              "properties": {
+                "value": {},
+                "source": { "type": "string", "minLength": 1 },
+                "url": { "type": ["string", "null"], "format": "uri" },
+                "observed_at": { "$ref": "#/$defs/date" }
+              }
+            }
+          },
+          "status": { "enum": ["open", "resolved"] },
+          "resolution": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "landing_page": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": { "enum": ["not_started", "running", "ready", "partial", "stale", "failed"] },
+        "briefing_path": { "$ref": "#/$defs/nullablePath" },
+        "creative_direction_path": { "$ref": "#/$defs/nullablePath" },
+        "output_paths": { "type": "array", "items": { "$ref": "#/$defs/path" } },
+        "approved_at": { "$ref": "#/$defs/nullableDate" },
+        "published_at": { "$ref": "#/$defs/nullableDate" }
+      }
+    },
+    "workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "current_stage", "last_error"],
+      "properties": {
+        "status": { "$ref": "#/$defs/intakeStatus" },
+        "current_stage": { "type": "string", "minLength": 1 },
+        "last_error": { "type": ["string", "null"], "maxLength": 500 }
+      }
+    },
+    "created_at": { "$ref": "#/$defs/date" },
+    "updated_at": { "$ref": "#/$defs/date" }
+  },
+  "$defs": {
+    "entityId": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 80 },
+    "intakeStatus": { "enum": ["pending", "running", "ready", "partial", "stale", "failed"] },
+    "date": { "type": "string", "format": "date-time" },
+    "nullableDate": { "anyOf": [{ "type": "null" }, { "$ref": "#/$defs/date" }] },
+    "path": { "type": "string", "minLength": 1, "pattern": "^(?!/)(?![A-Za-z]:)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$" },
+    "nullablePath": { "anyOf": [{ "type": "null" }, { "$ref": "#/$defs/path" }] },
+    "pathItem": {
+      "type": "object",
+      "required": ["path"],
+      "properties": { "path": { "$ref": "#/$defs/path" } }
+    },
+    "cache": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fingerprint", "collected_at", "expires_at"],
+      "properties": {
+        "fingerprint": { "type": ["string", "null"] },
+        "collected_at": { "$ref": "#/$defs/nullableDate" },
+        "expires_at": { "$ref": "#/$defs/nullableDate" }
+      }
+    }
+  }
+}
