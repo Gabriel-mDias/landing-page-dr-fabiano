@@ -73,9 +73,9 @@ def main() -> None:
         (MEDIA / "Profissional" / "fabiano_1.png", "fabiano-retrato", (640, 960, 1280)),
         (MEDIA / "Profissional" / "fabiano_2.png", "fabiano-cirurgia", (640, 960, 1280)),
         (MEDIA / "Profissional" / "fabiano_3.png", "fabiano-perfil", (640, 960, 1280)),
-        (MEDIA / "Espaço" / "espaco_1.png", "adriele-recepcao", (640, 960, 1280)),
-        (MEDIA / "Espaço" / "espaco_2.png", "consultorio-recepcao", (640, 960, 1280)),
-        (MEDIA / "Espaço" / "espaco_3.png", "adriele-consultorio", (640, 960, 1280)),
+        (MEDIA / "Espaço" / "espaco_1.png", "adriele-recepcao", (640, 960, 1280, 1600)),
+        (MEDIA / "Espaço" / "espaco_2.png", "consultorio-recepcao", (640, 960, 1280, 1600)),
+        (MEDIA / "Espaço" / "espaco_3.png", "adriele-consultorio", (640, 960, 1280, 1600)),
         (
             MEDIA / "Instagram" / "ia_generated_1" / "tratamento_fisioterapeutico_1.jpg",
             "fisioterapia-conceitual",
