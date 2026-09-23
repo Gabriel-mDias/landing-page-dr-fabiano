@@ -1,77 +1,16 @@
 import { SITE_CONFIG } from '../../config/site.js';
-
-function whatsappUrl(message = SITE_CONFIG.contact.whatsappMessage) {
-  return `https://wa.me/${SITE_CONFIG.contact.whatsapp}?text=${encodeURIComponent(message)}`;
-}
+const whatsappUrl = (message = SITE_CONFIG.contact.whatsappMessage) => `https://wa.me/${SITE_CONFIG.contact.whatsapp}?text=${encodeURIComponent(message)}`;
 
 export function initContact() {
-  document.querySelectorAll('[data-contact="whatsapp"]').forEach((link) => {
-    link.href = whatsappUrl();
-  });
-  document.querySelectorAll('[data-contact="whatsapp-label"]').forEach((element) => {
-    element.textContent = SITE_CONFIG.contact.whatsappLabel;
-  });
-  document.querySelectorAll('[data-contact="email"]').forEach((link) => {
-    link.href = `mailto:${SITE_CONFIG.contact.email}`;
-  });
-  document.querySelectorAll('[data-contact="email-label"]').forEach((element) => {
-    element.textContent = SITE_CONFIG.contact.email;
-  });
-  document.querySelectorAll('[data-contact="instagram"]').forEach((link) => {
-    link.href = SITE_CONFIG.contact.instagramUrl;
-  });
-  document.querySelectorAll('[data-contact="instagram-label"]').forEach((element) => {
-    element.textContent = `@${SITE_CONFIG.contact.instagram}`;
-  });
-  document.querySelectorAll('[data-contact="maps"]').forEach((link) => {
-    link.href = SITE_CONFIG.contact.mapsUrl;
-  });
-
-  const year = document.querySelector('[data-current-year]');
-  if (year) year.textContent = String(new Date().getFullYear());
-
-  const form = document.querySelector('[data-contact-form]');
-  const status = document.querySelector('[data-form-status]');
-  const submit = form?.querySelector('button[type="submit"]');
-  if (!form || !status || !submit) return;
-
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    if (!form.reportValidity()) return;
-
-    const data = Object.fromEntries(new FormData(form).entries());
-    if (data.botcheck) return;
-
-    if (!SITE_CONFIG.form.accessKey) {
-      const message = `Olá! Meu nome é ${data.nome}. Gostaria de conversar sobre ${data.interesse}. Telefone: ${data.telefone}.`;
-      status.textContent = 'Abrindo o WhatsApp para concluir seu contato…';
-      window.open(whatsappUrl(message), '_blank', 'noopener,noreferrer');
-      return;
-    }
-
-    submit.disabled = true;
-    status.textContent = 'Enviando…';
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          ...data,
-          access_key: SITE_CONFIG.form.accessKey,
-          subject: SITE_CONFIG.form.subject,
-          from_name: SITE_CONFIG.brand.name
-        })
-      });
-      const result = await response.json();
-      if (!result.success) throw new Error(result.message || 'Falha no envio');
-      form.reset();
-      status.textContent = 'Mensagem recebida. Entraremos em contato em breve.';
-      status.dataset.state = 'success';
-    } catch {
-      status.textContent = 'Não foi possível enviar agora. Use o WhatsApp ou tente novamente.';
-      status.dataset.state = 'error';
-    } finally {
-      submit.disabled = false;
-    }
-  });
+  document.querySelectorAll('[data-contact="whatsapp"]').forEach((link) => { link.href = whatsappUrl(); link.target = '_blank'; link.rel = 'noopener noreferrer'; });
+  document.querySelectorAll('[data-contact="whatsapp-label"]').forEach((el) => { el.textContent = SITE_CONFIG.contact.whatsappLabel; });
+  document.querySelectorAll('[data-contact="instagram"]').forEach((link) => { link.href = SITE_CONFIG.contact.instagramUrl; link.target = '_blank'; link.rel = 'noopener noreferrer'; });
+  document.querySelectorAll('[data-contact="instagram-label"]').forEach((el) => { el.textContent = `@${SITE_CONFIG.contact.instagram}`; });
+  document.querySelectorAll('[data-contact="maps"]').forEach((link) => { link.href = SITE_CONFIG.contact.mapsUrl; link.target = '_blank'; link.rel = 'noopener noreferrer'; });
+  document.querySelectorAll('[data-current-year]').forEach((el) => { el.textContent = String(new Date().getFullYear()); });
+  const hero = document.querySelector('.hero'); const floating = document.querySelector('[data-whatsapp-float]');
+  if (hero && floating) new IntersectionObserver(([entry]) => floating.classList.toggle('is-visible', !entry.isIntersecting), { threshold: 0.05 }).observe(hero);
+  const form = document.querySelector('[data-contact-form]'); const status = form?.querySelector('[data-form-status]');
+  if (!form || !status) return;
+  form.addEventListener('submit', (event) => { event.preventDefault(); if (!form.reportValidity()) return; const data = new FormData(form); const name = String(data.get('nome') || '').trim().replace(/[\r\n]+/g, ' ').slice(0, 80); const allowed = new Set(['primeira consulta', 'retorno', 'informações']); const interest = allowed.has(data.get('interesse')) ? data.get('interesse') : 'informações'; const message = `Olá! Conheci o site do Dr. Fabiano Carvalho. Meu nome é ${name} e gostaria de ${interest}.`; status.textContent = 'O WhatsApp será aberto para você revisar e enviar a mensagem.'; status.dataset.state = 'success'; window.open(whatsappUrl(message), '_blank', 'noopener,noreferrer'); });
 }

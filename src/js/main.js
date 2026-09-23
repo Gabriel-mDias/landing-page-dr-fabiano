@@ -4,6 +4,7 @@ import { initNavigation } from './modules/navigation.js';
 import { initCarousel } from './modules/carousel.js';
 import { initContact } from './modules/contact.js';
 import { initFaq } from './modules/faq.js';
+import { initMedia } from './modules/media.js';
 
 function bootstrap() {
   const lenis = initAnimations();
@@ -11,6 +12,7 @@ function bootstrap() {
   initCarousel();
   initContact();
   initFaq();
+  initMedia();
 }
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bootstrap);

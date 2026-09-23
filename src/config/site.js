@@ -1,23 +1,5 @@
 export const SITE_CONFIG = {
-  brand: {
-    name: 'Clínica Aurora',
-    legalName: 'EMPRESA DEMONSTRATIVA — substitua antes de publicar',
-    niche: 'Clínica médica multidisciplinar',
-    city: 'Vitória',
-    state: 'ES'
-  },
-  contact: {
-    whatsapp: '5527999999999',
-    whatsappLabel: '(27) 99999-9999',
-    whatsappMessage: 'Olá! Conheci a Clínica Aurora pelo site e gostaria de agendar uma consulta.',
-    email: 'contato@clinicaaurora.example',
-    instagram: 'clinicaaurora.exemplo',
-    instagramUrl: 'https://www.instagram.com/',
-    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Vitória+ES'
-  },
-  form: {
-    provider: 'web3forms',
-    accessKey: '',
-    subject: 'Novo contato pelo site — Clínica Aurora'
-  }
+  brand: { name: 'Dr. Fabiano Carvalho', legalName: 'Dr. Fabiano Carvalho', niche: 'Ortopedia e Traumatologia', credentials: 'CRM-RJ 52.104550-4 · RQE 24130', specialties: ['Ortopedia', 'Traumatologia', 'Pé e tornozelo'], metrics: { experienceYears: 22, patients: 'mais de 180 mil' }, city: 'Bom Jesus do Itabapoana', state: 'RJ' },
+  contact: { whatsapp: '5522997380202', whatsappLabel: '(22) 99738-0202', whatsappMessage: 'Olá! Conheci o site do Dr. Fabiano Carvalho. Meu nome é [nome] e gostaria de [primeira consulta/retorno/informações].', email: '', instagram: 'drfabiano.ortopedista', instagramUrl: 'https://www.instagram.com/drfabiano.ortopedista/', mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Avenida+Dr+Abreu+Lima+97+sala+107+Centro+Bom+Jesus+do+Itabapoana+RJ', address: 'Avenida Dr. Abreu Lima, 97, sala 107, Centro, Bom Jesus do Itabapoana — RJ' },
+  form: { provider: 'local-whatsapp', accessKey: '', subject: '' }
 };

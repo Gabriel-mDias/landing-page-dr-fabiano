@@ -1,20 +1,29 @@
-# Ativos visuais e licenças
+# Ativos visuais, fontes e autorizações
 
-Curadoria para o template demonstrativo, consultada em 17/09/2026.
+Inventário revisado em 23/09/2026. O responsável do projeto declarou que todos os ativos locais e pessoas retratadas foram autorizados para edição e publicação comercial. Originais ficam em `media/`; somente derivações otimizadas estão em `public/assets/`.
 
-As fotos vêm do Pexels. A [licença oficial](https://www.pexels.com/license/) permite uso gratuito e comercial e alterações, sem exigir atribuição. Ainda assim, este projeto registra autoria e origem. Pessoas retratadas não devem ser apresentadas como sócias, profissionais, pacientes reais ou apoiadoras da marca.
-
-| Arquivo local | Autor | Página de origem | Uso no template |
+| Origem | Derivação publicada | Uso | Autorização/observação |
 |---|---|---|---|
-| `hero-clinica.webp` | Pavel Danilyuk | [White and Blue Wooden Counter](https://www.pexels.com/photo/a-white-and-blue-wooden-counter-7108284/) | Hero / ambiente demonstrativo |
-| `consulta.webp` | Antoni Shkraba | [Woman Consulting a Doctor](https://www.pexels.com/photo/woman-consulting-a-doctor-5215008/) | Jornada de atendimento |
-| `consultorio.webp` | enis mekic | [Interior Design of a Medical Clinic](https://www.pexels.com/photo/interior-design-of-a-medical-clinic-7016405/) | Estrutura / ambiente |
-| `acolhimento.webp` | Max Vakhtbovych | [Modern sofa near reception](https://www.pexels.com/photo/modern-sofa-and-reflecting-table-near-reception-counter-in-salon-6899545/) | Sobre / acolhimento |
+| `media/Logo/logo.png` | `public/assets/logo/logo-full.png`, `logo-icon.png` | Marca, header, rodapé e favicon | PNG oficial fornecido e autorizado; monograma apenas recortado, sem alteração do desenho |
+| `media/Hero/hero_procedimento_1.mp4` | `hero-procedimento.mp4`, `.webm`, `hero-poster-1200.*` | Hero desktop e fallback | Recorte de 10 s, sem áudio; quadros amostrados sem identificação visível |
+| `media/Profissional/fabiano_1.png` | `fabiano-retrato-*` | Apresentação sobre fundo editorial em CSS | Retrato transparente autorizado do profissional |
+| `media/Profissional/fabiano_2.png` | `fabiano-cirurgia-*` | Poster de vídeo | Retrato autorizado do profissional |
+| `media/Profissional/fabiano_3.png` | `fabiano-perfil-*` | Trajetória/poster | Retrato autorizado do profissional |
+| `media/Espaço/espaco_1.png` e `espaco_3.png` | `adriele-*` | Equipe/recepção | Adriele Marques; uso comercial autorizado |
+| `media/Espaço/espaco_2.png` | `consultorio-recepcao-*` | Consultório | Espaço real autorizado |
+| `media/Instagram/post_2/movimento_e_saude.mp4` | `movimento-saude.mp4` | Cirurgia sob demanda | A partir de 5 s; sem áudio; autorizado |
+| `media/Instagram/post_3/outras_abordagens_alem_da_cirurgia.mp4` | `infiltracoes.mp4`, `.vtt` | Infiltrações sob demanda | Áudio mantido; legenda e transcrição resumidas a partir do conteúdo aprovado |
+| `media/Instagram/ia_generated_1/tratamento_fisioterapeutico_1.jpg` | `fisioterapia-conceitual-*` | Ambientação conceitual | Gerada por IA; identificada; não representa paciente, caso ou resultado |
 
-## Regras para clientes reais
+As imagens responsivas possuem AVIF e WebP em larguras de até 1280 px (1600 px na imagem conceitual), adequadas a telas de alta densidade. O processamento usa redimensionamento Lanczos, nitidez leve e compressão de alta qualidade, sem reconstrução generativa; originais permanecem intactos em `media/`. O pipeline reprodutível está em `scripts/process-images.py`. Nenhum quadro publicado deve conter prontuário, nome de paciente ou dado identificável; a verificação deve ser repetida antes de qualquer publicação definitiva.
 
-1. Preferir logo, espaço, sócios e equipe fornecidos e aprovados pelo cliente.
-2. Registrar fonte e licença de cada ativo externo antes do download.
-3. Nunca usar foto de banco como prova social, equipe, paciente ou resultado clínico.
-4. Não usar marca, obra visível ou pessoa de modo que sugira endosso.
-5. Guardar originais em `media/` apenas quando houver autorização; publicar versões otimizadas em `public/assets/`.
+## Fontes
+
+| Família | Arquivo | Origem | Licença |
+|---|---|---|---|
+| Libre Bodoni Variable | `public/assets/fonts/LibreBodoni-Variable.ttf` | Repositório oficial Google Fonts | SIL Open Font License 1.1; cópia em `OFL-Libre-Bodoni.txt` |
+| Montserrat Variable | `public/assets/fonts/Montserrat-Variable.ttf` | Repositório oficial Google Fonts | SIL Open Font License 1.1; cópia em `OFL-Montserrat.txt` |
+
+## Limites
+
+Os ativos não devem ser reutilizados fora deste projeto sem nova verificação de autorização. Não há banco de imagens apresentado como paciente, equipe ou endosso, nem imagem de caso/resultado clínico.
