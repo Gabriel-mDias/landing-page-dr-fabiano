@@ -1,4 +1,5 @@
 User-agent: *
 Disallow: /
 
-# Template demonstrativo. Troque por Allow: / somente após aprovação para produção.
+# Demo sem domínio ou autorização de indexação.
+# Adicionar Sitemap somente após a publicação definitiva.

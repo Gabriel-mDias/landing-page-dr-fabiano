@@ -36,14 +36,6 @@ const packageJson = JSON.parse(await readFile(resolve(root, 'package.json'), 'ut
 for (const hook of ['data-contact="whatsapp"', 'data-contact-form', 'aria-live="polite"']) if (!html.includes(hook)) failures.push(`Hook genérico ausente: ${hook}`);
 for (const field of ['whatsapp:', 'email:', 'instagramUrl:', 'accessKey:']) if (!config.includes(field)) failures.push(`Configuração genérica ausente: ${field}`);
 
-// Marca, mídia e narrativa da Clínica Aurora só são obrigatórias no sample intacto.
-if (packageJson.name === 'landing-page-sample') {
-  for (const file of ['public/favicon.svg', 'public/assets/logo/aurora-symbol.svg', 'public/assets/images/hero-clinica.webp', 'public/assets/images/consulta.webp', 'public/assets/images/consultorio.webp', 'public/assets/images/acolhimento.webp']) {
-    try { await access(resolve(root, file)); } catch { failures.push(`Fixture exclusiva do sample ausente: ${file}`); }
-  }
-  for (const section of ['inicio', 'sobre', 'especialidades', 'jornada', 'duvidas', 'contato']) if (!html.includes(`id="${section}"`)) failures.push(`Seção da demo Aurora ausente: #${section}`);
-}
-
 if (!skill.includes('Claude') || !skill.includes('Gemini') || !skill.includes('Codex')) failures.push('A skill não declara compatibilidade com Codex, Gemini e Claude.');
 if (!skill.includes('landing_page.*') || !skill.includes('$landing-page-workflow')) failures.push('O builder não documenta ownership e retorno ao workflow.');
 if (!skill.includes('references/visual-taste.md')) failures.push('O builder não integra o preflight de gosto visual.');

@@ -1,9 +1,10 @@
 {
-  "name": "landing-page-sample",
+  "name": "dr-fabiano-carvalho",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "assets": "python scripts/process-images.py",
     "dev": "vite --open",
     "build": "vite build",
     "preview": "vite preview",

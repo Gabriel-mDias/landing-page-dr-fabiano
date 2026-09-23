@@ -1,18 +1,1 @@
-{
-  "name": "Clínica Aurora — Demonstração",
-  "short_name": "Aurora Demo",
-  "description": "Template demonstrativo de landing page para clínicas e serviços profissionais.",
-  "lang": "pt-BR",
-  "start_url": "./",
-  "display": "standalone",
-  "background_color": "#f7f5f0",
-  "theme_color": "#183f3a",
-  "icons": [
-    {
-      "src": "./favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    }
-  ]
-}
+{"name":"Dr. Fabiano Carvalho","short_name":"Dr. Fabiano","description":"Ortopedia e Traumatologia em Bom Jesus do Itabapoana","lang":"pt-BR","start_url":"./","display":"standalone","background_color":"#092942","theme_color":"#092942","icons":[{"src":"./assets/logo/logo-icon.png","sizes":"640x640","type":"image/png","purpose":"any maskable"}]}
