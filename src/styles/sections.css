@@ -167,7 +167,6 @@
   position: relative;
   width: min(100%, 440px);
   aspect-ratio: 4/5;
-  padding: 1rem 0 0 1rem;
   border: 1px solid var(--gold);
   background: radial-gradient(circle at 56% 36%, #eaf6f8 0%, #c8dbe1 54%, #88a2b1 100%);
   box-shadow: 0 36px 90px rgba(9, 41, 66, .2);
@@ -611,12 +610,13 @@
 }
 
 .office figure:nth-child(even) {
-  margin-top: 4rem;
+  margin-top: 2.5rem;
 }
 
 .office figure picture {
   position: relative;
   display: block;
+  aspect-ratio: 3/2;
   overflow: hidden;
 }
 
@@ -629,14 +629,27 @@
 }
 
 .office figure img {
+  display: block;
   width: 100%;
-  aspect-ratio: .8;
+  height: 100%;
   object-fit: cover;
   filter: saturate(.92) contrast(1.03);
 }
 
+.office figure:nth-child(1) img {
+  object-position: 50% 30%;
+}
+
+.office figure:nth-child(2) img,
+.office figure:nth-child(3) img {
+  object-position: 50% 35%;
+}
+
 .office figcaption {
-  padding: 1rem 0;
+  display: flex;
+  min-height: 3.6rem;
+  align-items: center;
+  padding: .8rem .25rem .2rem;
   color: var(--navy);
   font-family: var(--font-display);
   font-size: 1.2rem;
